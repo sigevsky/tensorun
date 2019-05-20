@@ -4,6 +4,6 @@ services:
   jupyter:
     image: jupyter/scipy-notebook
     volumes:
-      - .:/home/jovyan/work
+      - ..:/home/jovyan/work
     ports:
       - 8888:8888
