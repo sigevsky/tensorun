@@ -20,6 +20,6 @@ class LogisticLayer:
     def backward(self, er):
         dsig = self._sig_f * (1 - self._sig_f)
         e = er * dsig  # shape = (1, m)
-        dw = 1 / len(e) * np.sum(np.dot(e, self._x_f.T), axis=0)
-        db = 1 / len(e) * np.sum(e)
+        dw = 1 / e.size * np.sum(np.dot(e, self._x_f.T), axis=0)
+        db = 1 / e.size * np.sum(e)
         return dw, db

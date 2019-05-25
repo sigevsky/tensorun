@@ -10,10 +10,10 @@ class MSE:
         assert y_hat.shape == y.shape
         self._y_hat = y_hat
         self._y = y
-        return 1 / (2 * y.size) * np.sum(np.power((y - y_hat), 2))
+        return 1 / (2 * y.shape[1]) * np.sum(np.power((y - y_hat), 2))
 
     def backwards(self):
-        return 1 / self._y_hat.size * (self._y_hat - self._y)
+        return 1 / self._y_hat.shape[1] * (self._y_hat - self._y)
 
 
 class CrossEntropyLoss:
