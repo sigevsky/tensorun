@@ -14,6 +14,6 @@ class SigmaActivation:
         self._cache = self._sig(x)
         return self._cache
 
-    def backward(self, e):
+    def backwards(self, e):
         dsig = self._cache * (1 - self._cache)
         return e * dsig

@@ -5,14 +5,14 @@ class Dense:
 
     def __init__(self, n, m):
         self.W = np.random.rand(n, m)
-        self.b = np.random.rand(n, 1)
+        self.b = np.zeros((n, 1))
         self._x_f = None  # (m x r)
 
     def forward(self, x):
         self._x_f = x
         return np.dot(self.W, x) + self.b
 
-    def backward(self, e: np.ndarray):
+    def backwards(self, e: np.ndarray):
         dW = np.dot(e, self._x_f.T)
         db = np.sum(e, axis=1, keepdims=True)
 

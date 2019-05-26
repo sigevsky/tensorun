@@ -6,11 +6,11 @@ class MSE:
         self._y_hat = None
         self._y = None
 
-    def __call__(self, y, y_hat):
+    def __call__(self, y_hat, y):
         assert y_hat.shape == y.shape
         self._y_hat = y_hat
         self._y = y
-        return 1 / (2 * y.shape[1]) * np.sum(np.power((y - y_hat), 2))
+        return 1 / (2 * y.shape[1]) * np.sum(np.power((y_hat - y), 2))
 
     def backwards(self):
         return 1 / self._y_hat.shape[1] * (self._y_hat - self._y)
@@ -21,7 +21,7 @@ class CrossEntropyLoss:
         self._y_hat = None
         self._y = None
 
-    def __call__(self, y, y_hat):
+    def __call__(self, y_hat, y):
         assert y_hat.shape == y.shape
         self._y_hat = y_hat
         self._y = y
